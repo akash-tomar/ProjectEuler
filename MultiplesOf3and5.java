@@ -1,47 +1,38 @@
 package projectEuler;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class MultiplesOf3and5 {
+	
+	public static long findNforNum(long num,int factor) {
+		if(num%factor==0) {
+			return (long)(num/factor-1);
+		}
+		for(int i=0;i<factor;i++) {
+			if(num%factor==0) {
+				return (long)(num/factor);
+			} else {
+				num--;
+			}
+		}
+		return -1;
+	}
+	
+	public static long sum(long n,int d) {
+		long x= (2*d+(n-1)*d)*n/2;
+		return x;
+	}
+	
 	public static void main(String[] args) {
 
 		Scanner s = new Scanner(System.in);
 		int test = s.nextInt();
 		for(int t=0;t<test;t++) {
 			long n = s.nextInt();
-			int index = 1;
-			long x=3;
-			long y=5;
-			boolean three = false;
-			boolean five = false;
-			long sum = 0;
-			HashMap<Long, Boolean> map = new HashMap<>();
-			while(true) {
-				if(x>=n) {
-					three = true;
-				} else {
-					if(!map.containsKey(x)) {
-						map.put(x, true);
-						sum+=x;
-					}
-				}
-				if(y>=n) {
-					five = true;
-				} else {
-					if(!map.containsKey(y)) {
-						map.put(y, true);
-						sum+=y;
-					}
-				}
-				if(three && five) {
-					break;
-				}
-				
-				x+=3;
-				y+=5;
-			}
-			System.out.println(sum);
+			long three = (long)(sum(findNforNum(n, 3), 3));
+			long five = (long) sum(findNforNum(n, 5),5);
+			long diff = (long) sum(findNforNum(n, 15),15);
+			System.out.println(three+five-diff);
 		}
 	}
 }
