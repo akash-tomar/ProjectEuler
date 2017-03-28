@@ -36,20 +36,15 @@ public class LargestPallindrome {
 		Collections.sort(list);
 		for(int test=0;test<t;test++) {
 			int n = s.nextInt();
-			int begin = 0;
-			int end = list.size()-1;
-			int mid = (end-begin)/2;
 			int max = Integer.MIN_VALUE;
-			while(mid>begin && mid<end) {
-				if(list.get(mid)<n) {
-					max = Math.max(max, list.get(mid));
-					begin = mid;
-				} else if(list.get(mid)>n) {
-					end = mid;
+			for(int i=0;i<list.size();i++) {
+				if(list.get(i)<n) {
+					if(max<list.get(i)) {
+						max = list.get(i);
+					} 
 				} else {
 					break;
 				}
-				mid = (begin + end)/2;
 			}
 			System.out.println(max);
 		}
