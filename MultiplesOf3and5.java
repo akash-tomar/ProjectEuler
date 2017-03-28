@@ -24,7 +24,6 @@ public class MultiplesOf3and5 {
 	}
 	
 	public static void main(String[] args) {
-
 		Scanner s = new Scanner(System.in);
 		int test = s.nextInt();
 		for(int t=0;t<test;t++) {
