@@ -37,14 +37,24 @@ public class LargestPrimeFactor {
 		int t = s.nextInt();
 		for(int test=0;test<t;test++) {
 			int n = s.nextInt();
-			ArrayList<Integer> list = getFactors(n, 2);
-			for(int i=list.size()-2;i>=0;i--) {
-				if(isPrime(list.get(i))) {
-					System.out.println(list.get(i));
+			while(true) {
+				if(n%2==0) {
+					n=n/2;
+				} else {
 					break;
 				}
 			}
+			if(n==1) {
+				System.out.println("2");
+				continue;
+			}
+			while(true) {
+				if(isPrime(n)) {
+					System.out.println(n);
+					break;
+				}
+				n=n-2;
+			}
 		}
-		s.close();
 	}
 }
